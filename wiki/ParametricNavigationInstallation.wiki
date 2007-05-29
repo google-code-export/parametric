@@ -1,0 +1,84 @@
+#summary Parametric Navigation Installation Instructions
+
+= Introduction =
+
+This page contains the installation instructions for the GSA parametric navigation.
+
+= Details =
+
+Installation Instructions:
+
+
+Step 1
+~~~~~~
+
+The external javascript is found in the googleParametric.js file.  It can be included into an XSLT (right before the body tag for the results page) by doing the following:
+
+<!-- Meta Tag Cluster code start -->
+ <script language='javascript' src='http://YOUR_HOST/googleParametric.js'>//Comment</script>
+<!-- Meta Tag Cluster code end -->
+
+You will also have to change YOUR_HOST to the host name where you have placed the googleParametric.js file.
+
+OR
+
+If you do not wish, or do not have an external machine to import the javascript code from, you must import the following file:
+
+googleParametricInclude.txt
+
+into your XSLT (right before the body tag for the results page).
+
+
+Step 2
+~~~~~~
+
+Call mTLoad in the body onLoad portion of the XSLT similar to this:
+
+<body onLoad="mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">
+
+
+Step 3
+~~~~~~
+
+Place any function calls above, before the mTLoad statement if you require them.
+For example:
+
+<body onLoad="mTSetHeader('Parametric Navigation'); mTSetHost('GSA_HOST_NAME'); mTSetMaxDisplay(5); mTSort('keywords', 'alpha asc'); mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">
+
+
+Step 4
+~~~~~~
+
+Change any occurrences of GSA_HOST_NAME to the hostname for your Google Search Appliance (GSA).
+
+
+Step 5
+~~~~~~
+
+Create the following xsl template inside your xslt:
+
+<xsl:template name="my_parametric_navigation">
+  <span class="p">
+    <xsl:text disable-output-escaping="yes"> &lt;!-- Please enter html code belo
+w. --&gt;</xsl:text>
+
+ <!-- ********************************************************************** -->
+
+  <div name="mtParametric" id="mtParametric"><font size="1"><br/><br/><br/><br/>
+&#160;&#160;&#160;Loading parametric...</font></div>
+
+ <!-- ********************************************************************** -->
+
+  </span>
+</xsl:template>
+
+
+Step 6
+~~~~~~
+
+Call the my_parametric_navigation template:
+
+<xsl:call-template name="my_parametric_navigation">
+</xsl:call-template>
+
+wherever you want to display the parametric navigation results.
