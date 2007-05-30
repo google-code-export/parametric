@@ -1,4 +1,5 @@
 #summary Parametric Navigation Installation Instructions
+#labels Featured
 
 = Introduction =
 
@@ -59,8 +60,7 @@ Create the following xsl template inside your xslt:
 
 <xsl:template name="my_parametric_navigation">
   <span class="p">
-    <xsl:text disable-output-escaping="yes"> &lt;!-- Please enter html code belo
-w. --&gt;</xsl:text>
+    <xsl:text disable-output-escaping="yes"> &lt;!-- Please enter html code below. --&gt;</xsl:text>
 
  <!-- ********************************************************************** -->
 
