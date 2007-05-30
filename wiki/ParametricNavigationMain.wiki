@@ -1,4 +1,5 @@
 #summary The GSA Parametric Navigation Main Page
+#labels Featured
 
 = Introduction =
 
@@ -55,4 +56,3 @@ Functions:
 - mTSetAllPlacement(allName, allLocation)
   - allName is the label to be given to the all link.
   - allLocation is the location to place the all link.  It can be either header or list.
-
