@@ -9,6 +9,7 @@ This page contains the installation instructions for the GSA parametric navigati
 
 Installation Instructions:
 
+NOTE: Google does not warranty or in any way guarantee the reliability of this code.  Use it at your own risk.
 
 Step 1
 ~~~~~~
