@@ -1,4 +1,4 @@
-#summary The GSA Parametric Navigation Main Page
+#summary The GSA Parametric Navigation Main Page - version 1.1
 #labels Featured
 
 = Introduction =
@@ -42,6 +42,9 @@ Functions:
 
 - mTSetHost(hostName)
   - The host name to do the parametric query on.
+
+- mTSetShowNumbers(show)
+  - whether or not to display the numbers beside each parametric value in a grouping.
 
 - mTSetExpandName(expandName)
   - expandName is the label for the expand link.
