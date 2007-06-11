@@ -1,4 +1,4 @@
-#summary Parametric Navigation Installation Instructions
+#summary Parametric Navigation Installation Instructions - version 1.1
 #labels Featured
 
 = Introduction =
