@@ -1,13 +1,21 @@
-GSA Parametric Search
+GSA Parametric Search v1.2
 
-Author: Fraser MacKenzie
+Author: Fraser MacKenzie (fmackenz@gmail.com)
 Collaborators: Laurent Guiraud, Bruce Bordelon
 Date Created: May 10, 2007
-Last Updated: May 29, 2007
+Last Updated: June 25, 2007
 
 All source and documentation of the Parametric Navigation project is copyrighted by Google and made available under version 2.0 of the Apache License.  The license can be found in the file license.txt.
 
+Google assumes no responsibility for this code and provides no support for it.
 
+Changes in v1.2:
+- Fixed selection of parametric values containing special characters
+- Added new function for setting titles for each parametric grouping
+- Added highlighting for parametric selections
+
+Known Issues:
+- Only one parametric value at a time can be selected
 
 The GSA Parametric Search is a feature that uses the XML output of the GSA, in combination with javascript, to provide a means to visually filter results based upon meta data.
 
@@ -27,6 +35,10 @@ Functions:
   - metaTagName is the name of the meta tag to display.
   - metaTagDelimiter is a delimiter that will be used to split up values into multiple values.  An empty meta tag delimter indicates that the meta tag value is not to be split up.
 
+- mTSetDisplayName(metaTagName, metaTagDisplayName)
+  - metaTagname is the name of the meta tag that you wish to setup a label for.
+  = metTagDisplayName is the label value for the meta tag.
+
 - mTCombineField(combineFrom, combineTo)
   - combineFrom field is the name of the meta tag that you wish to take all the values from.
   - combineTo field is the name of the meta tag that you wish to place all the values in.
@@ -38,6 +50,9 @@ Functions:
 
 - mTSetHeader(headerName)
   - the header name to display at the top of the parametric results.
+
+- mTSetShowNumbers(show)
+  - whether or not to display the numbers beside each parametric value in a grouping.
 
 - mTSetHost(hostName)
   - The host name to do the parametric query on.
@@ -57,6 +72,7 @@ Functions:
 - mTSetAllPlacement(allName, allLocation)
   - allName is the label to be given to the all link.
   - allLocation is the location to place the all link.  It can be either header or list.
+
 
 Installation Instructions:
 
