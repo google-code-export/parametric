@@ -16,9 +16,9 @@ Installation Instructions:
 
 The external javascript is found in the googleParametric.js file.  It can be included into an XSLT (right before the body tag for the results page) by doing the following:
 
-<!-- Meta Tag Cluster code start -->
+_<!-- Meta Tag Cluster code start -->
  <script language='javascript' src='http://YOUR_HOST/googleParametric.js'>//Comment</script>
-<!-- Meta Tag Cluster code end -->
+<!-- Meta Tag Cluster code end -->_
 
 You will also have to change YOUR_HOST to the host name where you have placed the googleParametric.js file.
 
@@ -37,7 +37,7 @@ into your XSLT (right before the body tag for the results page).
 
 Call mTLoad in the body onLoad portion of the XSLT similar to this:
 
-<body onLoad="mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">
+_<body onLoad="mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">_
 
 
 
@@ -47,7 +47,7 @@ Call mTLoad in the body onLoad portion of the XSLT similar to this:
 Place any function calls above, before the mTLoad statement if you require them.
 For example:
 
-<body onLoad="mTSetHeader('Parametric Navigation'); mTSetHost('GSA_HOST_NAME'); mTSetMaxDisplay(5); mTSort('keywords', 'alpha asc'); mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">
+_<body onLoad="mTSetHeader('Parametric Navigation'); mTSetHost('GSA_HOST_NAME'); mTSetMaxDisplay(5); mTSort('keywords', 'alpha asc'); mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">_
 
 
 
@@ -63,7 +63,7 @@ Change any occurrences of GSA_HOST_NAME to the hostname for your Google Search A
 
 Create the following xsl template inside your xslt:
 
-<xsl:template name="my_parametric_navigation">
+_<xsl:template name="my_parametric_navigation">
   <span class="p">
     <xsl:text disable-output-escaping="yes"> &lt;!-- Please enter html code below. --&gt;</xsl:text>
 
@@ -75,7 +75,7 @@ Create the following xsl template inside your xslt:
  <!-- ********************************************************************** -->
 
   </span>
-</xsl:template>
+</xsl:template>_
 
 
 
@@ -84,7 +84,7 @@ Create the following xsl template inside your xslt:
 
 Call the my_parametric_navigation template:
 
-<xsl:call-template name="my_parametric_navigation">
-</xsl:call-template>
+_<xsl:call-template name="my_parametric_navigation">
+</xsl:call-template>_
 
 wherever you want to display the parametric navigation results.
