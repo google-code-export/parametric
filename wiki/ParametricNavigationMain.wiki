@@ -16,10 +16,8 @@ Here is the data flow for the GSA Parametric Search:
 {{{
 1. Query is submitted to GSA
 2. Results are returned and XSLT is applied
-3. AJAX query for standard clustered results is submitted to GSA
-4. Standard clustered results are returned and displayed
-5. AJAX query for parametric search is submitted to GSA
-6. XML is returned, parsed, and parametric results are displayed
+3. AJAX query for parametric search is submitted to GSA
+4. XML is returned, parsed, and parametric results are displayed
 }}}
 
 Functions:
