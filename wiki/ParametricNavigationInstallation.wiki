@@ -9,11 +9,11 @@ This page contains the installation instructions for the GSA parametric navigati
 
 Installation Instructions:
 
-NOTE: Google does not warranty or in any way guarantee the reliability of this code.  Use it at your own risk.
+==> NOTE: Google does not warranty or in any way guarantee the reliability of this code.  Use it at your own risk.
 
-Step 1
-~~~~~~
 
+STEP 1
+------
 The external javascript is found in the googleParametric.js file.  It can be included into an XSLT (right before the body tag for the results page) by doing the following:
 
 <!-- Meta Tag Cluster code start -->
@@ -31,16 +31,20 @@ googleParametricInclude.txt
 into your XSLT (right before the body tag for the results page).
 
 
-Step 2
-~~~~~~
+
+
+STEP 2
+------
 
 Call mTLoad in the body onLoad portion of the XSLT similar to this:
 
 <body onLoad="mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">
 
 
-Step 3
-~~~~~~
+
+
+STEP 3
+------
 
 Place any function calls above, before the mTLoad statement if you require them.
 For example:
@@ -48,14 +52,18 @@ For example:
 <body onLoad="mTSetHeader('Parametric Navigation'); mTSetHost('GSA_HOST_NAME'); mTSetMaxDisplay(5); mTSort('keywords', 'alpha asc'); mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">
 
 
-Step 4
-~~~~~~
+
+
+STEP 4
+------
 
 Change any occurrences of GSA_HOST_NAME to the hostname for your Google Search Appliance (GSA).
 
 
-Step 5
-~~~~~~
+
+
+STEP 5
+------
 
 Create the following xsl template inside your xslt:
 
@@ -74,8 +82,10 @@ Create the following xsl template inside your xslt:
 </xsl:template>
 
 
-Step 6
-~~~~~~
+
+
+STEP 6
+------
 
 Call the my_parametric_navigation template:
 
