@@ -1,21 +1,24 @@
-GSA Parametric Search v1.2
+GSA Parametric Search v1.3
 
-Author: Fraser MacKenzie (fmackenz@gmail.com)
+Author: Fraser MacKenzie
 Collaborators: Laurent Guiraud, Bruce Bordelon
 Date Created: May 10, 2007
-Last Updated: June 25, 2007
+Last Updated: August 27, 2007
 
 All source and documentation of the Parametric Navigation project is copyrighted by Google and made available under version 2.0 of the Apache License.  The license can be found in the file license.txt.
 
 Google assumes no responsibility for this code and provides no support for it.
 
-Changes in v1.2:
-- Fixed selection of parametric values containing special characters
+Changes Since v1.1:
+- Selection of more than one meta data field is allowed
+- Fixed selection of parametric values containing special characters (not including accented characters).
 - Added new function for setting titles for each parametric grouping
 - Added highlighting for parametric selections
 
 Known Issues:
-- Only one parametric value at a time can be selected
+- selection of values with international characters (accented characters) does not work.
+- selection of date values does not work.
+- no ranged search
 
 The GSA Parametric Search is a feature that uses the XML output of the GSA, in combination with javascript, to provide a means to visually filter results based upon meta data.
 
@@ -32,46 +35,61 @@ Here is the data flow for the GSA Parametric Search:
 Functions:
 
 - mTAddField(metaTagName, metaTagDelimiter)
-  - metaTagName is the name of the meta tag to display.
-  - metaTagDelimiter is a delimiter that will be used to split up values into multiple values.  An empty meta tag delimter indicates that the meta tag value is not to be split up.
+
+    * metaTagName is the name of the meta tag to display.
+    * metaTagDelimiter is a delimiter that will be used to split up values into multiple values. An empty meta tag delimter indicates that the meta tag value is not to be split up.}
 
 - mTSetDisplayName(metaTagName, metaTagDisplayName)
-  - metaTagname is the name of the meta tag that you wish to setup a label for.
-  = metTagDisplayName is the label value for the meta tag.
+
+    * metaTagname is the name of the meta tag that you wish to setup a label for.
+    * metTagDisplayName is the label value for the meta tag.
 
 - mTCombineField(combineFrom, combineTo)
-  - combineFrom field is the name of the meta tag that you wish to take all the values from.
-  - combineTo field is the name of the meta tag that you wish to place all the values in.
 
-- mTLoad(id, mTURL, showNumbers)
-  - the id is the div id in the xslt that the parametric results will be placed into.
-  - mTURL is the complete set of URL parameters that have to be passed to the javascript, in order to retain all the appropriate search criteria.  If you are calling this from a GSA Frontend, then you will need to use the {$search_url} variable.
-  - showNumbers is a flag which will enable or disable the display of the meta tag counts.  0 indicates do not show counts, while 1 indicates show counts.
+    * combineFrom field is the name of the meta tag that you wish to take all the values from.
+    * combineTo field is the name of the meta tag that you wish to place all the values in.
+
+- mTLoad(id, mTURL)
+
+    * the id is the div id in the xslt that the parametric results will be placed into.
+    * mTURL is the complete set of URL parameters that have to be passed to the javascript, in order to retain all the appropriate search criteria. If you are calling this from a GSA Frontend, then you will need to use the {$search_url} variable.
 
 - mTSetHeader(headerName)
-  - the header name to display at the top of the parametric results.
+
+    * the header name to display at the top of the parametric results.
 
 - mTSetShowNumbers(show)
-  - whether or not to display the numbers beside each parametric value in a grouping.
+
+    * whether or not to display the numbers beside each parametric value in a grouping.
 
 - mTSetHost(hostName)
-  - The host name to do the parametric query on.
+
+    * The host name to do the parametric query on.
+
+- mTSetShowNumbers(show)
+
+    * whether or not to display the numbers beside each parametric value in a grouping.
 
 - mTSetExpandName(expandName)
-  - expandName is the label for the expand link.
+
+    * expandName is the label for the expand link.
 
 - mTSetCollapseName(collapseName)
-  - collapseName is the label for the collapse link.
+
+    * collapseName is the label for the collapse link.
 
 - mTSetMaxDisplay(maxDisplay)
-  - set the maximum number of meta data values to display for each of the meta data names.
+
+    * set the maximum number of meta data values to display for each of the meta data names.
 
 - mTSort(metaTagName, sortBy)
-  - set the sort type and order for a specific meta tag name.
+
+    * set the sort type and order for a specific meta tag name.
 
 - mTSetAllPlacement(allName, allLocation)
-  - allName is the label to be given to the all link.
-  - allLocation is the location to place the all link.  It can be either header or list.
+
+    * allName is the label to be given to the all link.
+    * allLocation is the location to place the all link. It can be either header or list.
 
 
 Installation Instructions:
@@ -127,8 +145,7 @@ Create the following xsl template inside your xslt:
 
 <xsl:template name="my_parametric_navigation">
   <span class="p">
-    <xsl:text disable-output-escaping="yes"> &lt;!-- Please enter html code belo
-w. --&gt;</xsl:text>
+    <xsl:text disable-output-escaping="yes"> &lt;!-- Please enter html code below. --&gt;</xsl:text>
 
  <!-- ********************************************************************** -->
 

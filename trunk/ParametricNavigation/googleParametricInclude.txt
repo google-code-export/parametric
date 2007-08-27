@@ -8,6 +8,8 @@
 var mTGSAHost = "SOMEHOST.com";
 var originalURL;
 
+var seperator = ".";
+
 // The name of the id where the meta data clusters are going to be placed
 var idName = "";
 
@@ -76,6 +78,8 @@ mTSort('techcluster', 'hits desc');
 // mTCombineField(formField, toField);
 mTCombineField('creationdate', 'createdate');
 
+
+// Create the Request Object that we will use to make AJAX calls.
 function mTCreateRequestObject()
 {
 
@@ -195,12 +199,15 @@ function mTCombineField(mTNameS, mTNameE)
 function mTLoad(id, mTURL)
 {
   idName = id;
-  originalURL = "http://" + mTGSAHost + "/search?" + mTURL.replace(/&amp;partialfields=.*?&amp;/, "&amp;");
+  var partialFields = "";
+
+  originalURL = "http://" + mTGSAHost + "/search?" + mTURL;
 
   // Modify the URL to get the appropriate XML output
   var url = "http://" + mTGSAHost + "/search?" + mTURL + "&amp;num=100";
   url = url.replace(/&amp;proxystylesheet=.*?&amp;/, "&amp;");
-  url = url.replace(/&amp;client=.*?&amp;/, "&amp;client=default_frontend&amp;");
+  // alert("in mtLoad about to post " + url);
+
   // This must be a get or it will not work with firefox.  For IE it can be
   // either and it will work.
   mTHTTP.open('get', url);
@@ -245,7 +252,6 @@ function mTParse(idName, response)
   var metaTagName;
   var metaTagValue;
   var metaTagDelimiter;
-  // var mTArray = new Array();
   var displayTagName = false;
   var mTResult = "";
 
@@ -254,9 +260,9 @@ function mTParse(idName, response)
 
   // Only display parametric information if there is parametric information to
   // display
-  if (metaTags.length > 0)
+  if (metaTags.length &gt; 0)
   {
-    for(var i=0;i&lt;metaTags.length;i++)
+    for(var i=0;i &lt; metaTags.length;i++)
     {
       metaTagName = "";
       metaTagValue = "";
@@ -266,10 +272,12 @@ function mTParse(idName, response)
       metaTagName = metaTags[i].attributes.getNamedItem("N").value;
       metaTagName = metaTagName.toLowerCase();
       metaTagName = mTDoCombination(metaTagName);
+      // alert("metaTagName = " + metaTagName);
 
       // Get the meta tag value and modify it if necessary.
       metaTagValue = metaTags[i].attributes.getNamedItem("V").value;
       metaTagValue = trim(metaTagValue);
+      // alert("metaTagValue = " + metaTagValue);
 
       displayTagName = false;
       if (metaTagValue != "")
@@ -302,13 +310,13 @@ function mTParse(idName, response)
             mTArray = new Array();
           }
 
-          // Do we have a delimiter?  If so, we have to see if we have to split this
-          // value and do this mulitple times.
+          // Do we have a delimiter?  If so, we have to see if we have to split
+          // this value and do this mulitple times.
           if (metaTagDelimiter != "")
           {
             var newMTValues;
             newMTValues = metaTagValue.split(metaTagDelimiter);
-            for(var j=0;j&lt;newMTValues.length;j++)
+            for(var j=0;j &lt; newMTValues.length;j++)
             {
               if (newMTValues[j] != "")
               {
@@ -328,10 +336,8 @@ function mTParse(idName, response)
     }
   }
 
+  // Output the results to the page
   mTOutputParametric(idName);
-
-  // Put the results to the page
-  // document.getElementById(idName).innerHTML = mTResult;
 }
 
 function mTDoHash(mTArray, mTName, mTValue)
@@ -387,7 +393,7 @@ function mTPosSwitch(mTParametricArr, arrPos1, arrPos2)
 function hidediv(pass)
 {
   var divs = document.getElementsByTagName('div');
-  for(i=0;i&lt;divs.length;i++)
+  for(i=0;i &lt; divs.length;i++)
   {
     //if they are 'see' divs
     if(divs[i].id.match(pass))
@@ -412,7 +418,7 @@ function hidediv(pass)
 function showdiv(pass)
 {
   var divs = document.getElementsByTagName('div');
-  for(i=0;i&lt;divs.length;i++)
+  for(i=0;i &lt; divs.length;i++)
   {
     if(divs[i].id.match(pass))
     {
@@ -452,10 +458,10 @@ function mTOutputParametric(idName)
       }
       if (mTAllLocation == "header")
       {
-        mTResult += "(&lt;a href=\"" + originalURL + "\" onClick=\"setCookie('" + i + "', '');\"&gt;" + mTAllName + "&lt;/a&gt;)&lt;br/&gt;";
+        mTResult += "(&lt;a href=\"javascript:void(0);\" onClick=\"setCookie('" + i + "', '');var newURL=addPartialFieldsToURL('" + originalURL + "');document.location.href=newURL;\"&gt;" + mTAllName + "&lt;/a&gt;)&lt;br/&gt;";
       } else if (mTAllLocation == "list")
       {
-        mTResult += "&lt;br/&gt;&lt;a href=\"" + originalURL + "\" onClick=\"setCookie('" + i + "', '');\"&gt;" + mTAllName + "&lt;/a&gt;&lt;br/&gt;";
+        mTResult += "&lt;br/&gt;&lt;a href=\"javascript:void(0);\" onClick=\"setCookie('" + i + "', '');var newURL=addPartialFieldsToURL('" + originalURL + "');document.location.href=newURL;\"&gt;" + mTAllName + "&lt;/a&gt;&lt;br/&gt;";
       }
 
       // Stuff the values for this meta tag in an array
@@ -463,10 +469,13 @@ function mTOutputParametric(idName)
       var mTParametricCnt = 0;
       for (var j in mTArray[i])
       {
-        mTParametricArr[mTParametricCnt] = new Array();
-        mTParametricArr[mTParametricCnt][0] = j;
-        mTParametricArr[mTParametricCnt][1] = mTArray[i][j];
-        mTParametricCnt++;
+        if (trim(j).length &gt; 0)
+        {
+          mTParametricArr[mTParametricCnt] = new Array();
+          mTParametricArr[mTParametricCnt][0] = j;
+          mTParametricArr[mTParametricCnt][1] = mTArray[i][j];
+          mTParametricCnt++;
+        }
       }
 
       // Now we need to sort if this field is one of the ones we need to sort
@@ -496,9 +505,9 @@ function mTOutputParametric(idName)
       // quick sort.
       if (sortOrder != "")
       {
-        for (var j=0; j&lt;mTParametricArr.length; j++)
+        for (var j=0; j &lt; mTParametricArr.length; j++)
         {
-          for (var k=0; k&lt;mTParametricArr.length; k++)
+          for (var k=0; k &lt; mTParametricArr.length; k++)
           {
             if (sortOrder == "a")
             {
@@ -520,18 +529,17 @@ function mTOutputParametric(idName)
 
       // Let's figure out if this has been selected.
       var selectedValue = unescape(getCookie(i));
+      // alert("selectedValue = '" + selectedValue + "'");
 
       // Now print out the information.
-      for (var j=0; j&lt;mTParametricArr.length; j++)
+      for (var j=0; j &lt; mTParametricArr.length; j++)
       {
-
         var linkURL = baseURL;
 
         // At this point, we have to determine if there is an ampersand in the
         // value.  If there is, we have to split based upon it, and search
         // multiple partial fields.  If not, then we just append the value.
-        var seperator = ".";
-        if (mTParametricArr[j][0].indexOf("&amp;") > 0)
+        if (mTParametricArr[j][0].indexOf("&amp;") &gt; 0)
         {
           var tmpPartialFields = mTParametricArr[j][0].split("&amp;");
           for(var k=0; k &lt; tmpPartialFields.length; k++)
@@ -549,11 +557,9 @@ function mTOutputParametric(idName)
           linkURL += mTParametricArr[j][0];
         }
 
-        // var linkURL = baseURL + mTParametricArr[j][0];
-
         if (j == mTMaxDisplay)
         {
-          mTResult += "&lt;div id=\"" + i + "_expand\"&gt;&lt;a href=\"javascript:void(0)\" onClick=\"hidediv('" + i + "_expand');showdiv('" + i + "_collapse');\"&gt;" + mTExpandName + "&lt;/a&gt;&lt;/div&gt;";
+          mTResult += "&lt;div id=\"" + i + "_expand\"&gt;&lt;a href=\"javascript:void(0)\" onClick=\"hidediv('" + i + "_expand');showdiv('" + i + "_collapse');\">" + mTExpandName + "&lt;/a&gt;&lt;/div&gt;";
           mTResult += "&lt;div id=\"" + i + "_collapse\" style=\"display:none\"&gt;";
         }
         if ((selectedValue != null) &amp;&amp; (selectedValue == mTParametricArr[j][0]))
@@ -561,13 +567,13 @@ function mTOutputParametric(idName)
           mTResult += "&lt;b&gt;&lt;font color='red'&gt;" + mTParametricArr[j][0] + "&lt;/font&gt;&lt;/b&gt;";
         } else
         {
-          mTResult += "&lt;a href=\"" + linkURL + "\" onClick=\"setCookie('" + i + "', '" + mTParametricArr[j][0] + "');\"&gt;" + mTParametricArr[j][0] + "&lt;/a&gt;";
+          mTResult += "&lt;a href=\"javascript:void(0)\" onClick=\"setCookie('" + i + "', '" + mTParametricArr[j][0] + "');var newURL=addPartialFieldsToURL('" + linkURL + "');document.location.href=newURL;\"&gt;" + mTParametricArr[j][0] + "&lt;/a&gt;";
         }
         if (mTShowNumbers)
         {
           mTResult += " (" + mTParametricArr[j][1] + ")";
         }
-        mTResult += "&lt;br/&gt;";
+        mTResult += "<br/>";
       }
       if (mTParametricArr.length &gt; mTMaxDisplay)
       {
@@ -579,15 +585,16 @@ function mTOutputParametric(idName)
     mTResult += "&lt;/font&gt;&lt;/body&gt;&lt;/html&gt;";
   } else
   {
-    mTResult += "&lt;html&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;";
+    mTResult += "<html><body></body></html>";
   }
 
-  // Put the results to the page
+  // Output the results to the page
   document.getElementById(idName).innerHTML = mTResult;
 }
 
 function setCookie (name, value, expires, path, domain, secure)
 {
+  // alert("setting cookie '" + name + "' to value '" + value + "'");
   document.cookie = name + "=" + escape(value) +
                     ((expires) ? "; expires=" + expires : "") +
                     ((path) ? "; path=" + path : "") +
@@ -597,6 +604,7 @@ function setCookie (name, value, expires, path, domain, secure)
 
 function getCookie(name)
 {
+  // alert("getting cookie '" + name + "'");
   var nameEQ = name + "=";
   var ca = document.cookie.split(';');
   for(var i=0;i &lt; ca.length;i++)
@@ -608,7 +616,88 @@ function getCookie(name)
   return null;
 }
 
+function replaceAll(str, replaceFrom, replaceWith )
+{
+  var returnString = str;
+  while(returnString.match(replaceFrom) != null)
+  {
+    returnString = returnString.replace(replaceFrom, replaceWith);
+  }
+  return returnString;
+}
+
+function removePartialFieldsFromURL(URL)
+{
+  var newURL = URL;
+  // Get rid of any partialfields that occur in the middle of the URL
+  if (newURL.match(/&amp;partialfields=.*?&amp;/) != null)
+  {
+    while (newURL.match(/&amp;partialfields=.*?&amp;/) != null)
+    {
+      newURL = newURL.replace(/&amp;partialfields=.*?&amp;/, "&amp;");
+    }
+  }
+  // Get rid of partialfields that occurs at the end of the URL
+  newURL = newURL.replace(/&amp;partialfields=.*/, "");
+
+  return newURL;
+}
+
+function addPartialFieldsToURL(URL)
+{
+  var newURL = removePartialFieldsFromURL(URL);
+  var ca = document.cookie.split(';');
+
+  var pfCount = 0;
+  for(var i=0;i &lt; ca.length;i++)
+  {
+    var c = trim(ca[i]);
+    // Don't allow for cookies that start with two underscores or that are one
+    // character.
+    if (c.match(/^__/) == null)
+    {
+      var cookieName = c;
+      cookieName = cookieName.replace(/\=.*$/, "");
+      if (cookieName.length &gt; 1)
+      {
+        var cookieValue = unescape(getCookie(cookieName));
+        if ((cookieValue != null) &amp;&amp; (cookieValue != ""))
+        {
+          if (pfCount == 0)
+          {
+            newURL += "&amp;partialfields=";
+          } else
+          {
+            newURL += seperator;
+          }
+
+          if (cookieValue.indexOf("&amp;") > 0)
+          {
+            var tmpPartialFields = cookieValue.split("&amp;");
+            for(var k=0; k &lt; tmpPartialFields.length; k++)
+            {
+              if (k == 0)
+              {
+                newURL += escape(cookieName + ":" + escape(trim(tmpPartialFields[k])));
+              } else
+              {
+                newURL += seperator + escape(cookieName + ":" + escape(trim(tmpPartialFields[k])));
+              }
+            }
+          } else
+          {
+            newURL += escape(cookieName + ":" + escape(trim(cookieValue)));
+          }
+          pfCount++;
+        }
+      }
+    }
+  }
+  // alert("newURL = " + newURL);
+
+  return newURL;
+}
+
+
 </script>
 <!-- Meta Tag Cluster code end -->
-
-
