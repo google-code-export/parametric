@@ -1,4 +1,4 @@
-#summary Parametric Navigation Installation Instructions - version 1.4
+#summary Parametric Navigation Installation Instructions - version 1.5 (GSA v4.6.4.G70)
 #labels Featured
 
 = Introduction =
@@ -11,57 +11,13 @@ Installation Instructions:
 
 ==> NOTE: Google does not warranty or in any way guarantee the reliability of this code.  Use it at your own risk.
 
-
-==STEP 1==
-
-The external javascript is found in the googleParametric.js file.  It can be included into an XSLT (right before the body tag for the results page) by doing the following:
-
-_<!-- Meta Tag Cluster code start -->
- <script language='javascript' src='http://YOUR_HOST/googleParametric.js'>//Comment</script>
-<!-- Meta Tag Cluster code end -->_
-
-You will also have to change YOUR_HOST to the host name where you have placed the googleParametric.js file.
-
-OR
-
-If you do not wish, or do not have an external machine to import the javascript code from, you must import the following file:
-
-googleParametricInclude.txt
-
-into your XSLT (right before the body tag for the results page).
+==>NOTE: Before starting, it is important to use the parameter proxyreload=1 in your browser's URL line (for the search URL) in order to make sure that any changes to a stylesheet are reflected immediately.
 
 
+==Step 1==
 
-
-==STEP 2==
-
-Call mTLoad in the body onLoad portion of the XSLT similar to this:
-
-_<body onLoad="mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">_
-
-
-
-
-==STEP 3==
-
-Place any function calls above, before the mTLoad statement if you require them.
-For example:
-
-_<body onLoad="mTSetHeader('Parametric Navigation'); mTSetHost('GSA_HOST_NAME'); mTSetMaxDisplay(5); mTSort('keywords', 'alpha asc'); mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">_
-
-
-
-
-==STEP 4==
-
-Change any occurrences of GSA_HOST_NAME to the hostname for your Google Search Appliance (GSA).
-
-
-
-
-==STEP 5==
-
-Create the following xsl template inside your xslt:
+Create the following xsl template, where all other templates are defined,
+inside your xslt:
 
 _<xsl:template name="my_parametric_navigation">
   <span class="p">
@@ -77,10 +33,88 @@ _<xsl:template name="my_parametric_navigation">
   </span>
 </xsl:template>_
 
+==Step 2==
+
+In the "Global Style (do not customize" section, before 
+the _</xsl:comment>_ tag, put in the following lines:
+
+_<!-- ************************************************************* -->
+<!-- CUSTOM : Parametric Navigation specific style
+*************************** -->
+div#metaclustering { font-size: 84%; line-height: 140%; float: right; width: 15em; margin: 1em 0 0 1em; padding-left: 1em; border-left: 1px solid #cccccc; }
+div#metaclustering h3 { font-size: 100%; font-weight: bold; margin: 1.2em 0 0.6em 0; padding: 0; }
+div#metaclustering ul { list-style: none; margin: 0; padding: 0; }
+div#metaclustering li { margin-left: 2em; text-indent: -2em; }
+#metacluster_message { color: #666666; }
+<!-- ************************************************************* -->_
+
+==Step 3==
+
+In the "Search results (do not customize)" section, right before the body tag,
+add the following include files:
+
+_<script language='javascript' src='common.js'>//Comment</script>
+ <script language='javascript' src='xmlhttp.js'>//Comment</script>
+ <script language='javascript' src='uri.js'>//Comment</script>
+ <script language='javascript' src='cluster.js'>//Comment</script>_
+
+==Step 4==
+
+In the "Search results (do not customize)" section, right before the body tag,
+you can either include the googleParametric.js file as follows:
+
+_<!-- Parametric Navigation code start -->
+ <script language='javascript' src='http://YOUR_HOST/googleParametric.js'>//Comment</script>
+<!-- Parametric Navigation code end -->_
+
+You will also have to change YOUR_HOST to the host name where you have placed the googleParametric.js file.
+
+OR
+
+If you do not wish, or do not have an external machine to import the javascript code from, you must import the following file:
+
+googleParametricInclude.txt
+
+into your XSLT right before the body tag for the results page.
 
 
+==Step 5==
 
-==STEP 6==
+Call mTLoad in the body onLoad portion of the XSLT similar to this:
+
+_<body onLoad="mTSetHost('GSA_HOST_NAME'); mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">_
+
+Make sure to change the GSA_HOST_NAME to the host name of your GSA.
+
+==Step 6==
+
+Place any other parametric navigation function calls that are required, before
+the mTLoad statement.  
+
+NOTE: If you do not add in any mTAddField calls, then all the parametric fields
+and their values will be displayed.  If you wish only specific parametric
+fields to be displayed, use the mTAddField function call, as follows:
+
+_// mTAddField(metaTagName, metaTagDelimiter);
+mTAddField('keywords', ',');_
+
+If you wish to name the Label for a specific parametric field, then the
+mTSetDisplayName function will need to be used, as follows:
+
+_// mTSetDisplayName(metaTagName, metaTagLabel);
+mTSetDisplayName('keywords', 'Keywords');_
+
+For more information on the list of available functions and their description, 
+please see the parametric navigation documentation or the readme.txt file.
+
+
+==Step 7==
+
+Change any occurrences of GSA_HOST_NAME to the hostname for your Google
+Search Appliance (GSA).
+
+
+==Step 8==
 
 Call the my_parametric_navigation template:
 
