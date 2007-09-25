@@ -19,7 +19,9 @@ Installation Instructions:
 Create the following xsl template, where all other templates are defined,
 inside your xslt:
 
-_<xsl:template name="my_parametric_navigation">
+_
+{{{
+<xsl:template name="my_parametric_navigation">
   <span class="p">
     <xsl:text disable-output-escaping="yes"> &lt;!-- Please enter html code below. --&gt;</xsl:text>
 
@@ -31,12 +33,14 @@ _<xsl:template name="my_parametric_navigation">
  <!-- ********************************************************************** -->
 
   </span>
-</xsl:template>_
+</xsl:template>
+}}}
+_
 
 ==Step 2==
 
 In the "Global Style (do not customize" section, before 
-the _</xsl:comment>_ tag, put in the following lines:
+the </xsl:comment> tag, put in the following lines:
 
 _<!-- ************************************************************* -->
 <!-- CUSTOM : Parametric Navigation specific style
@@ -53,10 +57,14 @@ div#metaclustering li { margin-left: 2em; text-indent: -2em; }
 In the "Search results (do not customize)" section, right before the body tag,
 add the following include files:
 
-_<script language='javascript' src='common.js'>//Comment</script>
- <script language='javascript' src='xmlhttp.js'>//Comment</script>
- <script language='javascript' src='uri.js'>//Comment</script>
- <script language='javascript' src='cluster.js'>//Comment</script>_
+_
+{{{
+<script language='javascript' src='common.js'>//Comment</script>
+<script language='javascript' src='xmlhttp.js'>//Comment</script>
+<script language='javascript' src='uri.js'>//Comment</script>
+<script language='javascript' src='cluster.js'>//Comment</script>
+}}}
+_
 
 ==Step 4==
 
