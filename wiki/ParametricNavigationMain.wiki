@@ -1,4 +1,4 @@
-#summary The GSA Parametric Navigation Main Page - version 1.4
+#summary The GSA Parametric Navigation Main Page - version 1.5
 #labels Featured
 
 = Introduction =
@@ -60,9 +60,8 @@ Functions:
   * set the maximum number of meta data values to display for each of the meta data names.
 
 - mTSort(metaTagName, sortBy)
-  * set the sort type and order for a specific meta tag name.
+  * set the sort type and order for a specific meta tag name.  Valid values for sortBy are: 'alpha asc', 'alpha desc', 'hits asc', and 'hits desc'.
 
 - mTSetAllPlacement(allName, allLocation)
   * allName is the label to be given to the all link.
   * allLocation is the location to place the all link.  It can be either header or list.
-
