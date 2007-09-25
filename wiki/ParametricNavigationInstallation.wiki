@@ -3,7 +3,7 @@
 
 = Introduction =
 
-This page contains the installation instructions for the GSA parametric navigation.
+This page contains the installation instructions for the GSA parametric navigation.  All the appropriate files can be found in the zip file that is available in the downloads section.
 
 = Details =
 
