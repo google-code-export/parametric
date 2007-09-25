@@ -42,7 +42,9 @@ _
 In the "Global Style (do not customize" section, before 
 the </xsl:comment> tag, put in the following lines:
 
-_<!-- ************************************************************* -->
+_
+{{{
+<!-- ************************************************************* -->
 <!-- CUSTOM : Parametric Navigation specific style
 *************************** -->
 div#metaclustering { font-size: 84%; line-height: 140%; float: right; width: 15em; margin: 1em 0 0 1em; padding-left: 1em; border-left: 1px solid #cccccc; }
@@ -50,7 +52,9 @@ div#metaclustering h3 { font-size: 100%; font-weight: bold; margin: 1.2em 0 0.6e
 div#metaclustering ul { list-style: none; margin: 0; padding: 0; }
 div#metaclustering li { margin-left: 2em; text-indent: -2em; }
 #metacluster_message { color: #666666; }
-<!-- ************************************************************* -->_
+<!-- ************************************************************* -->
+}}}
+_
 
 ==Step 3==
 
@@ -71,9 +75,13 @@ _
 In the "Search results (do not customize)" section, right before the body tag,
 you can either include the googleParametric.js file as follows:
 
-_<!-- Parametric Navigation code start -->
+_
+{{{
+<!-- Parametric Navigation code start -->
  <script language='javascript' src='http://YOUR_HOST/googleParametric.js'>//Comment</script>
-<!-- Parametric Navigation code end -->_
+<!-- Parametric Navigation code end -->
+}}}
+_
 
 You will also have to change YOUR_HOST to the host name where you have placed the googleParametric.js file.
 
