@@ -98,7 +98,11 @@ into your XSLT right before the body tag for the results page.
 
 Call mTLoad in the body onLoad portion of the XSLT similar to this:
 
-_<body onLoad="mTSetHost('GSA_HOST_NAME'); mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">_
+_
+{{{
+<body onLoad="mTSetHost('GSA_HOST_NAME'); mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">
+}}}
+_
 
 Make sure to change the GSA_HOST_NAME to the host name of your GSA.
 
@@ -111,14 +115,22 @@ NOTE: If you do not add in any mTAddField calls, then all the parametric fields
 and their values will be displayed.  If you wish only specific parametric
 fields to be displayed, use the mTAddField function call, as follows:
 
-_// mTAddField(metaTagName, metaTagDelimiter);
-mTAddField('keywords', ',');_
+_
+{{{
+// mTAddField(metaTagName, metaTagDelimiter);
+mTAddField('keywords', ',');
+}}}
+_
 
 If you wish to name the Label for a specific parametric field, then the
 mTSetDisplayName function will need to be used, as follows:
 
-_// mTSetDisplayName(metaTagName, metaTagLabel);
-mTSetDisplayName('keywords', 'Keywords');_
+_
+{{{
+// mTSetDisplayName(metaTagName, metaTagLabel);
+mTSetDisplayName('keywords', 'Keywords');
+}}}
+_
 
 For more information on the list of available functions and their description, 
 please see the parametric navigation documentation or the readme.txt file.
@@ -134,7 +146,11 @@ Search Appliance (GSA).
 
 Call the my_parametric_navigation template:
 
-_<xsl:call-template name="my_parametric_navigation">
-</xsl:call-template>_
+_
+{{{
+<xsl:call-template name="my_parametric_navigation">
+</xsl:call-template>
+}}}
+_
 
 wherever you want to display the parametric navigation results.
