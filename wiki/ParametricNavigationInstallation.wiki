@@ -100,11 +100,11 @@ Call mTLoad in the body onLoad portion of the XSLT similar to this:
 
 _
 {{{
-<body onLoad="mTSetHost('GSA_HOST_NAME'); mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">
+<body onLoad="mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">
 }}}
 _
 
-Make sure to change the GSA_HOST_NAME to the host name of your GSA.
+
 
 ==Step 6==
 
@@ -137,12 +137,6 @@ please see the parametric navigation documentation or the readme.txt file.
 
 
 ==Step 7==
-
-Change any occurrences of GSA_HOST_NAME to the hostname for your Google
-Search Appliance (GSA).
-
-
-==Step 8==
 
 Call the my_parametric_navigation template:
 
