@@ -114,7 +114,7 @@ _
         <!-- Parametric Navigation code end -->
       </xsl:if>
       <xsl:if test="$show_res_clusters = '1' and $show_parametric_navigation = '1'">
-        <body onLoad="resetForms(); cs_loadClusters('{$search_url}', cs_drawClusters); mTSetHost('GSA_HOST_NAME'); mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">
+        <body onLoad="resetForms(); cs_loadClusters('{$search_url}', cs_drawClusters); mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">
           <xsl:call-template name="search_results_body"/>
         </body>
       </xsl:if>
@@ -125,7 +125,7 @@ _
         </body>
       </xsl:if>
       <xsl:if test="$show_res_clusters != '1' and $show_parametric_navigation = '1'">
-        <body onLoad="resetForms(); mTSetHost('GSA_HOST_NAME'); mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">
+        <body onLoad="resetForms(); mTLoad('mtParametric', '{$search_url}', 1);" dir="ltr">
           <xsl:call-template name="search_results_body"/>
         </body>
       </xsl:if>
@@ -139,7 +139,6 @@ _
 }}}
 _
 
-Make sure that you change any occurrences of GSA_HOST_NAME to the name of your GSA.
 
 
 ==Step 5==
@@ -166,11 +165,8 @@ _
 }}}
 _
 
-with the contents of the googleParametricInclude.txt file.  Make sure that any
-and all occurrences of GSA_HOST_NAME in both the XSLT and the .js file have
-been changed to reflect the host name of the GSA where the parametric
-navigation resides.  If you do not do this, parametric navigation will not
-work.
+with the contents of the googleParametricInclude.txt file.  
+
 
 ==Step 6==
 
@@ -205,12 +201,6 @@ For more information on the list of available functions and their description,
 please see the parametric navigation documentation or the readme.txt file.
 
 ==Step 7==
-
-Change any occurrences of GSA_HOST_NAME to the hostname for your Google
-Search Appliance (GSA).
-
-
-==Step 8==
 
 Call the my_parametric_navigation template:
 
@@ -400,5 +390,3 @@ _
 </xsl:template>
 }}}
 _
-
-
