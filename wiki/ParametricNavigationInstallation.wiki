@@ -1,4 +1,4 @@
-#summary Parametric Navigation Installation Instructions - version 1.5 (GSA v4.6.4.G70)
+#summary Parametric Navigation Installation Instructions - version 1.5.1 (GSA v4.6.4.G70)
 #labels Featured
 
 = Introduction =
