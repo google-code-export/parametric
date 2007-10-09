@@ -8,7 +8,10 @@ upon meta data.
 
 = Details =
 
-NOTE: Google does not warranty or in any way guarantee the reliability of this code.  Use it at your own risk.
+==> NOTE: Google does not warranty or in any way guarantee the reliability of this code.  Use it at your own risk.
+==> Miniumum Requirements: 
+  * Parametric Navigation *REQUIRES* GSA v4.6.4.G70 or higher.
+  * JavaScript must be enabled on the users browser.
 
 Changes Since v1.1:
   * mTSetHost has been deprecated.  The host name is automatically taken from the URL now.
@@ -75,11 +78,6 @@ Functions:
   * allName is the label to be given to the all link.
   * allLocation is the location to place the all link.  It can be either header or list.
 
-For the installation instructions, please see the appropriate files, which are based upon the version of the GSA that you are using.
-
-{{{
-GSA v5.0 - installation_instructions_v5.0.txt
-GSA v4.6.4 - installation_instructions_v4.6.4.txt
-}}}
+For the installation instructions, please see the Parametric Navigation Installation Instructions, which are based upon the version of the GSA that you are using.
 
 To report any issues, or provide any feedback, please contact: fmackenz@gmail.com
