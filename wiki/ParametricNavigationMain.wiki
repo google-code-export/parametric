@@ -9,6 +9,7 @@ upon meta data.
 = Details =
 
 ==> NOTE: Google does not warranty or in any way guarantee the reliability of this code.  Use it at your own risk.
+
 ==> Miniumum Requirements: 
   * Parametric Navigation *REQUIRES* GSA v4.6.4.G70 or higher.
   * JavaScript must be enabled on the users browser.
