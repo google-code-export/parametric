@@ -57,8 +57,21 @@ _
 
 ==Step 3==
 
-You must place the xmlhttp.js file which is included in the package on some external machine, where it is accessable via a webserver.  In the "Search results (do not customize)" section, right before the body tag,
-add the following include file:
+You must download an xmlhttp.js file from the internet.  For example, I have fou
+nd it at the following location:
+
+_
+{{{
+http://www.foto-group.com/xmlhttp/js/xmlhttp.js
+}}}
+_
+
+You can also do a Google search and find it in a lot of other locations where
+you can easily download it, or create your own.
+
+You then need to place the xmlhttp.js flie on some external machine, where it
+is accessable via a webserver. In the "Search results (do not customize)"
+section, right before the body tag, add the following include file:
 
 _
 {{{
