@@ -1,4 +1,4 @@
-#summary The GSA Parametric Navigation Main Page - version 1.5.1
+#summary The GSA/Google Mini Parametric Navigation Main Page - version 1.5.2
 #labels Featured
 
 = Introduction =
@@ -15,8 +15,11 @@ upon meta data.
   * JavaScript must be enabled on the users browser.
 
 Changes Since v1.1:
+  * added installation instructions for Google Mini.
+  * selection of values with international characters now work.
+  * fixed issue with parametric field names that contain non-alpha characters.
   * mTSetHost has been deprecated.  The host name is automatically taken from the URL now.
-  * Date value searches now work.
+  * Date value searches now work.  Dates must be in the format of yyyy-mm-dd.
   * Parametric values are now always returned if they exist.
   * Selection of more than one parametric field is allowed.
   * Fixed selection of parametric values containing special characters (not including accented characters).
