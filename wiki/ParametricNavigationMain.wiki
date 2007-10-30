@@ -19,12 +19,15 @@ Changes Since v1.1:
   * selection of values with international characters now work.
   * fixed issue with parametric field names that contain non-alpha characters.
   * mTSetHost has been deprecated.  The host name is automatically taken from the URL now.
-  * Date value searches now work.  Dates must be in the format of yyyy-mm-dd.
-  * Parametric values are now always returned if they exist.
-  * Selection of more than one parametric field is allowed.
-  * Fixed selection of parametric values containing special characters (not including accented characters).
-  * Added new function for setting titles for each parametric grouping.
-  * Added highlighting for parametric selections.
+  * date value searches now work.  Dates must be in the format of yyyy-mm-dd.
+  * parametric values are now always returned if they exist.
+  * selection of more than one parametric field is allowed.
+  * fixed selection of parametric values containing special characters (not including accented characters).
+  * added new function for setting titles for each parametric grouping.
+  * added highlighting for parametric selections.
+
+Known Issues:
+  * does not work with japanese or chinese characters.
 
 The GSA Parametric Search is a feature that uses the XML output of the GSA, in combination with javascript, to provide a means to visually filter results based upon meta data.
 
