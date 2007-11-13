@@ -1,4 +1,4 @@
-#summary The GSA/Google Mini Parametric Navigation Main Page - version 1.5.2
+#summary The GSA/Google Mini Parametric Navigation Main Page - version 1.5.3
 #labels Featured
 
 = Introduction =
@@ -68,6 +68,9 @@ Functions:
 
 - mTSetShowNumbers(show)
   * whether or not to display the numbers beside each parametric value in a grouping.
+
+- mTSetClearAllName(clearAllName)
+    * clearAllName is the label for the link that is used to clear all the parametric cookies.
 
 - mTSetExpandName(expandName)
   * expandName is the label for the expand link.
