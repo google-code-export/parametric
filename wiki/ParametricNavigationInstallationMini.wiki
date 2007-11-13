@@ -1,4 +1,4 @@
-#summary Parametric Navigation Installation Instructions - version 1.5.2 (Google Mini)
+#summary Parametric Navigation Installation Instructions - version 1.5.3 (Google Mini)
 
 = Introduction =
 
