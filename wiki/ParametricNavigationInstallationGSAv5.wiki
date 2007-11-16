@@ -200,7 +200,43 @@ _
 For more information on the list of available functions and their description,
 please see the parametric navigation documentation or the readme.txt file.
 
+
 ==Step 7==
+
+Modify the following:
+
+_
+{{{
+<!-- **********************************************************************
+ Logo template (can be customized)
+     ********************************************************************** -->
+<xsl:template name="logo">
+    <a href="{$home_url}"><img src="{$logo_url}"
+      width="{$logo_width}" height="{$logo_height}"
+      alt="Go to Google Home" border="0" /></a>
+</xsl:template>
+}}}
+_
+
+to:
+
+_
+{{{
+<!-- **********************************************************************
+ Logo template (can be customized)
+     ********************************************************************** -->
+<xsl:template name="logo">
+    <a href="{$home_url}"><img src="{$logo_url}"
+      width="{$logo_width}" height="{$logo_height}"
+      alt="Go to Google Home" border="0" onClick="clearAllCookies()" /></a>
+</xsl:template>
+}}}
+_
+
+in order to make your logo clear all set parametric cookies.
+
+
+==Step 8==
 
 Call the my_parametric_navigation template:
 
