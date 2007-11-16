@@ -14,7 +14,8 @@ upon meta data.
   * Parametric Navigation *REQUIRES* GSA v4.6.4.G70 or higher.
   * JavaScript must be enabled on the users browser.
 
-Changes Since v1.1:
+Changes Since v1.5:
+  * fixed issue with date searches where dates with a month of december were not treated as dates.
   * added a clear all function in order to clear all selected parametric fields.
   * modified code so that only parametric navigation cookies are selected.
   * added the ability to limit the number of results to the number of hits in a parametric field.
@@ -24,6 +25,8 @@ Changes Since v1.1:
   * fixed issue with parametric field names that contain non-alpha characters.
   * mTSetHost has been deprecated.  The host name is automatically taken from the URL now.
   * date value searches now work.  Dates must be in the format of yyyy-mm-dd.
+
+Changes Since v1.1:
   * parametric values are now always returned if they exist.
   * selection of more than one parametric field is allowed.
   * fixed selection of parametric values containing special characters (not including accented characters).
