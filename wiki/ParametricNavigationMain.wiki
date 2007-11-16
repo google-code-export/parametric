@@ -26,7 +26,7 @@ Changes Since v1.5:
 
 Changes Since v1.1:
   * mTSetHost has been deprecated.  The host name is automatically taken from the URL now.
-  * date value searches now work.  Dates must be in the format of yyyy-mm-dd.
+  * date value selections now work.  Dates must be in the format of yyyy-mm-dd.
   * parametric values are now always returned if they exist.
   * selection of more than one parametric field is allowed.
   * fixed selection of parametric values containing special characters (not including accented characters).
