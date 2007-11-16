@@ -15,6 +15,8 @@ upon meta data.
   * JavaScript must be enabled on the users browser.
 
 Changes Since v1.1:
+  * added a clear all function in order to clear all selected parametric fields.
+  * modified code so that only parametric navigation cookies are selected.
   * added the ability to limit the number of results to the number of hits in a parametric field.
   * fixed issue with japanese and chinese characters in IE.
   * added installation instructions for Google Mini.
