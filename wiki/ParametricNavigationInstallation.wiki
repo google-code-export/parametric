@@ -148,3 +148,38 @@ _
 _
 
 wherever you want to display the parametric navigation results.
+
+
+==Step 8==
+
+Modify the following:
+
+_
+{{{
+<!-- **********************************************************************
+ Logo template (can be customized)
+     ********************************************************************** -->
+<xsl:template name="logo">
+    <a href="{$home_url}"><img src="{$logo_url}"
+      width="{$logo_width}" height="{$logo_height}"
+      alt="Go to Google Home" border="0" /></a>
+</xsl:template>
+}}}
+_
+
+to:
+
+_
+{{{
+<!-- **********************************************************************
+ Logo template (can be customized)
+     ********************************************************************** -->
+<xsl:template name="logo">
+    <a href="{$home_url}"><img src="{$logo_url}"
+      width="{$logo_width}" height="{$logo_height}"
+      alt="Go to Google Home" border="0" onClick="clearAllCookies()" /></a>
+</xsl:template>
+}}}
+_
+
+in order to make your logo clear all set parametric cookies.
