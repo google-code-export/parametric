@@ -150,20 +150,6 @@ please see the parametric navigation documentation or the readme.txt file.
 
 ==Step 7==
 
-Call the my_parametric_navigation template:
-
-_
-{{{
-<xsl:call-template name="my_parametric_navigation">
-</xsl:call-template>
-}}}
-_
-
-wherever you want to display the parametric navigation results.
-
-
-==Step 8==
-
 Modify the following:
 
 _
@@ -195,3 +181,17 @@ _
 _
 
 in order to make your logo clear all set parametric cookies.
+
+
+==Step 8==
+
+Call the my_parametric_navigation template:
+
+_
+{{{
+<xsl:call-template name="my_parametric_navigation">
+</xsl:call-template>
+}}}
+_
+
+wherever you want to display the parametric navigation results.
