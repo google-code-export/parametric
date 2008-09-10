@@ -171,7 +171,7 @@ with the contents of the googleParametricInclude.txt file.
 ==Step 6==
 
 Place any other parametric navigation function calls that are required, before
-the mTLoad statement, which were put into the XSLT in Step 3.
+the mTLoad statement, which were put into the XSLT in Step 4.
 
 NOTE: If you do not add in any mTAddField calls, then all the parametric fields
 and their values will be displayed.  If you wish only specific parametric
